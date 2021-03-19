@@ -1,0 +1,17 @@
+---
+- name: Ensure Windows system is setup for container build/execution
+  hosts: all
+  collections:
+    - chocolatey.chocolatey
+
+  tasks:
+    - name: Check connectivity
+      win_ping:
+
+    - name: Install chocolatey
+      win_chocolatey:
+        name:
+          - chocolatey
+          - chocolatey-core.extension
+          - git
+        state: present
